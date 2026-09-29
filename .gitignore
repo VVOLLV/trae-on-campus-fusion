@@ -1,0 +1,6 @@
+node_modules/
+dist/
+cugb-phase2-prototype/
+artifacts/
+.DS_Store
+*.log

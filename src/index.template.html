@@ -1,0 +1,447 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f7f7f2" />
+    <title>{{pageTitle}}</title>
+    <meta name="description" content="{{description}}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="zh_CN" />
+    <meta property="og:title" content="{{pageTitle}}" />
+    <meta property="og:description" content="{{description}}" />
+    <meta property="og:image" content="{{shareImage}}" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    {{canonical}}
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+    <link rel="stylesheet" href="colors_and_type.css" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
+    <script>
+      // Runs before the first paint so a remembered Trae theme never flashes.
+      (() => {
+        try {
+          if (localStorage.getItem('trae-on-campus-theme') !== 'trae') return;
+          document.documentElement.dataset.theme = 'trae';
+          document.querySelector('meta[name="theme-color"]').content = '#1a1b1d';
+        } catch {
+          /* Storage blocked: stay on the campus theme. */
+        }
+      })();
+    </script>
+  </head>
+  <body data-phase="{{phase}}" data-end="{{end}}">
+    <a class="skip-link" href="#main">跳转到正文</a>
+    <div class="scroll-progress" aria-hidden="true"><span></span></div>
+    <header class="site-header" id="top">
+      <div class="header-inner">
+        <a class="brand" href="#main" aria-label="TRAE on Campus 首页"
+          >TRAE <span>on Campus</span></a
+        >
+        <div class="header-actions">
+          <nav class="desktop-nav" aria-label="主导航">
+            <a href="#story">活动简介</a><a href="#agenda">活动议程</a><a href="#guide">参会指南</a>
+          </nav>
+          <button
+            class="theme-switch"
+            type="button"
+            role="switch"
+            aria-checked="false"
+            aria-label="Trae 版深色主题"
+            data-theme-switch
+            hidden
+          >
+            <span class="theme-switch-track" aria-hidden="true"
+              ><span class="theme-switch-thumb"></span
+            ></span>
+          </button>
+          {{headerAction}}
+          <button
+            class="menu-toggle"
+            type="button"
+            hidden
+            aria-label="打开导航菜单"
+            aria-haspopup="dialog"
+            aria-controls="mobile-menu"
+            aria-expanded="false"
+          >
+            <span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </header>
+    <dialog class="mobile-menu" id="mobile-menu" aria-label="导航菜单">
+      <div class="menu-top">
+        <span class="brand">TRAE <span>on Campus</span></span
+        ><button type="button" class="icon-button" data-close-menu aria-label="关闭导航菜单">
+          ×
+        </button>
+      </div>
+      <div class="menu-theme">
+        <button
+          class="theme-switch"
+          type="button"
+          role="switch"
+          aria-checked="false"
+          aria-label="Trae 版深色主题"
+          data-theme-switch
+          hidden
+        >
+          <span class="theme-switch-label">校园版</span>
+          <span class="theme-switch-track" aria-hidden="true"
+            ><span class="theme-switch-thumb"></span
+          ></span>
+          <span class="theme-switch-label">Trae 版</span>
+        </button>
+      </div>
+      <nav aria-label="手机导航">
+        <a href="#story">活动简介 <span>01</span></a
+        ><a href="#agenda">活动议程 <span>02</span></a
+        ><a href="#guide">参会指南 <span>03</span></a
+        ><a href="#join">参与活动 <span>04</span></a>
+      </nav>
+      <div class="menu-foot">
+        <a class="menu-cta" href="#join"
+          ><span class="status-dot" aria-hidden="true"></span
+          ><span data-status>{{statusLabel}}</span><span aria-hidden="true">↗</span></a
+        >
+        <p class="menu-date">{{fullDate}}<br />{{timeRange}} · {{venue}}</p>
+      </div>
+    </dialog>
+
+    <main id="main" tabindex="-1">
+      <noscript
+        ><nav class="nojs-nav shell" aria-label="页面导航">
+          <a href="#story">活动简介</a><a href="#agenda">活动议程</a><a href="#guide">参会指南</a>
+        </nav></noscript
+      >
+      <section class="hero shell" aria-labelledby="hero-title">
+        <div class="hero-heading">
+          <h1 id="hero-title" lang="en" aria-label="TRAE on Campus Fusion">{{heroTitle}}</h1>
+          <div class="hero-details">
+            <p class="hero-description">{{heroDescription}}</p>
+            <div class="hero-actions">
+              {{heroAction}}<a class="text-link" href="campus-meetup.ics" download data-calendar
+                >加入日历 <span aria-hidden="true">＋</span></a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="event-strip">
+          <p><strong>{{compactDate}}</strong><span>{{timeRange}} · 北京时间</span></p>
+          <p>
+            <a href="#guide">{{venue}} <span aria-hidden="true">↗</span></a
+            ><span>北京 · 海淀</span>
+          </p>
+          <p><strong>三校在校生 · 各专业均可</strong><span>{{edition}}</span></p>
+        </div>
+        <figure class="vision-window" aria-labelledby="vision-title">
+          <canvas aria-hidden="true"></canvas>
+          <div class="vision-hud" aria-hidden="true">
+            <p class="vision-tag">
+              <span>REALTIME RENDER · SCROLL-LINKED</span><span data-vision-readout>VIEW 000</span>
+            </p>
+          </div>
+          <figcaption class="vision-caption">
+            <div>
+              <p class="vision-caption-title" id="vision-title">自由，正在渲染。</p>
+              <p class="vision-caption-text">
+                滚动页面，镜头沿着光迹推进——想象力到哪里，画布就到哪里。
+              </p>
+            </div>
+            <span class="vision-mark" aria-hidden="true"
+              ><svg viewBox="0 0 7 5" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M0 0H7V5H1V4H0ZM1 1H6V4H1Z" />
+                <path
+                  d="M1.793 2.5 2.5 1.793 3.207 2.5 2.5 3.207ZM3.793 2.5 4.5 1.793 5.207 2.5 4.5 3.207Z"
+                /></svg
+            ></span>
+          </figcaption>
+        </figure>
+      </section>
+
+      <section class="story shell section" id="story" aria-labelledby="story-title">
+        <div class="section-label"><span>为什么来</span></div>
+        <div class="story-heading">
+          <h2 id="story-title" class="display">
+            你负责好奇。<br /><span class="outline">一起探索可能。</span>
+          </h2>
+          <p class="story-intro">
+            一个课程作业、一段科研流程，<br />或者一个一直没动手的小点子。<br />AI
+            Coding，让开始变得更近一点。
+          </p>
+        </div>
+        <div class="benefits">
+          <article class="benefit reveal">
+            <span class="benefit-icon" aria-hidden="true">↗</span>
+            <h3>找到你的第一步</h3>
+            <p>从主题分享中认识 AI Coding，把新的工具和思路，联系到自己的专业与兴趣。</p>
+          </article>
+          <article class="benefit reveal">
+            <span class="benefit-icon" aria-hidden="true">⌘</span>
+            <h3>看见想法如何运行</h3>
+            <p>现场演示与答疑，让屏幕里的过程变得可见，也让你的问题有机会被认真讨论。</p>
+          </article>
+          <article class="benefit reveal">
+            <span class="benefit-icon" aria-hidden="true">✳</span>
+            <h3>遇见一起创造的人</h3>
+            <p>和来自三所高校的同学交流。不同专业、不同经验，都可以成为新的灵感来源。</p>
+          </article>
+        </div>
+        <div class="manifesto-card reveal">
+          <p>不必等到“准备好了”，<br />才开始你的第一个想法。</p>
+          <span class="manifesto-star" aria-hidden="true">✳</span>
+          <div class="manifesto-footer">
+            <a href="https://www.trae.cn/" target="_blank" rel="noopener noreferrer"
+              >先认识 TRAE <span aria-hidden="true">↗</span></a
+            >
+          </div>
+        </div>
+        <div class="numbers-panel reveal">
+          <div class="numbers-top">
+            <span>活动计划</span>
+          </div>
+          <dl class="stats-grid">
+            <div>
+              <dt>高校相聚</dt>
+              <dd>{{schoolCount}}<span>所</span></dd>
+            </div>
+            <div>
+              <dt>一起探索</dt>
+              <dd>{{durationHours}}<span>小时</span></dd>
+            </div>
+            <div>
+              <dt>主题分享</dt>
+              <dd>{{talkCount}}<span>场</span></dd>
+            </div>
+            <div>
+              <dt>计划规模</dt>
+              <dd class="stat-range">{{plannedRange}}<span>人</span></dd>
+            </div>
+          </dl>
+          <p class="numbers-note">以上为活动安排与计划规模，实际情况以现场为准。</p>
+        </div>
+      </section>
+
+      <section class="agenda shell section" id="agenda" aria-labelledby="agenda-title">
+        <div class="section-label rule"><span>活动议程</span></div>
+        <div class="section-heading">
+          <h2 id="agenda-title" class="display">
+            把一个下午，<br /><span class="outline">留给新的可能。</span>
+          </h2>
+          <div class="section-intro">
+            <p>{{fullDate}}<br />{{timeRange}} · 北京时间</p>
+            <a class="text-link" href="campus-meetup.ics" download data-calendar
+              >把这个下午加入日历 <span aria-hidden="true">＋</span></a
+            >
+          </div>
+        </div>
+        <div class="agenda-layout">
+          <aside class="agenda-aside">
+            <p class="agenda-date">{{dayNumber}}<span>{{monthEnglish}}</span></p>
+            <p>带一个问题来，<br />把一种可能带回去。</p>
+          </aside>
+          <ol class="agenda-list">
+            {{agenda}}
+          </ol>
+        </div>
+        <div class="speaker-area reveal" aria-labelledby="speakers-title">
+          <div>
+            <h3 id="speakers-title">分享者与话题</h3>
+          </div>
+          {{speakers}}
+        </div>
+      </section>
+
+      <section
+        class="memory shell section section-sub section-alt"
+        id="memory"
+        aria-labelledby="memory-title"
+      >
+        <div class="section-label"><span>{{memoryLabel}}</span></div>
+        {{memory}}
+      </section>
+
+      <section class="team shell section" id="team" aria-labelledby="team-title">
+        <div class="section-label rule"><span>共创团队</span></div>
+        <div class="section-heading">
+          <h2 id="team-title" class="display">
+            一起，<br /><span class="outline">让这次相遇发生。</span>
+          </h2>
+          <p class="section-intro">
+            来自三所高校与 TRAE 的八位伙伴，<br />让分享、交流与相遇发生。
+          </p>
+        </div>
+        <div class="team-layout reveal">
+          <div class="team-visual">
+            <div class="team-bars" role="group" aria-label="八位共创者，选择色条了解成员">
+              {{teamBars}}
+            </div>
+            <ul class="team-legend" aria-label="成员所属组织">
+              {{teamLegend}}
+            </ul>
+            <div
+              class="team-selection"
+              id="team-selection"
+              role="status"
+              aria-live="polite"
+              aria-atomic="true"
+            >
+              <span class="team-selection-number" data-team-number>{{teamCount}}</span>
+              <div>
+                <p data-team-name>不同角色，一起共创。</p>
+                <span data-team-detail>校园大使 ×4 · 运营 ×2 · 嘉宾 ×2</span>
+              </div>
+            </div>
+          </div>
+          <div class="team-members">
+            <ol class="team-roster">
+              {{teamRoster}}
+            </ol>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="guide shell section section-sub section-alt"
+        id="guide"
+        aria-labelledby="guide-title"
+      >
+        <div class="section-label"><span>参会指南</span></div>
+        <div class="section-heading">
+          <h2 id="guide-title" class="display">
+            从校园出发，<br /><span class="outline">在这里碰面。</span>
+          </h2>
+          <p class="section-intro">地点已定。<br />出发前，记得查看报名与入场信息。</p>
+        </div>
+        <div class="venue-grid">
+          <div class="venue-art" aria-hidden="true">
+            <div class="building">
+              <div class="building-roof"></div>
+              <div class="building-floor floor-3"><span>3F</span><i></i><i></i><i></i></div>
+              <div class="building-floor"><span>2F</span><i></i><i></i><i></i></div>
+              <div class="building-floor"><span>1F</span><i></i><i></i><i></i></div>
+            </div>
+          </div>
+          <div class="venue-copy">
+            <h3>大钟寺广场<br /><span>1 号楼 · 3F 报告厅</span></h3>
+            <address>{{address}}</address>
+            <div class="venue-actions">
+              <a
+                class="button button-dark"
+                href="{{mapURL}}"
+                target="_blank"
+                rel="noopener noreferrer"
+                >在地图中查看 <span aria-hidden="true">↗</span></a
+              ><button
+                class="text-link"
+                type="button"
+                data-copy-address
+                data-value="{{address}}"
+                hidden
+              >
+                复制地址 <span aria-hidden="true">＋</span>
+              </button>
+            </div>
+            <div class="arrival-note">
+              <span aria-hidden="true">↳</span>
+              <p><strong>13:30 开始签到</strong><br />{{entryNote}}</p>
+            </div>
+            {{contact}}
+          </div>
+        </div>
+        <div class="faq-layout">
+          <div>
+            <h3>你可能还想知道</h3>
+          </div>
+          <div class="faq-list">{{faq}}</div>
+        </div>
+      </section>
+
+      <section class="join shell" id="join" aria-labelledby="join-title">
+        <div class="join-card">
+          <div class="section-label">
+            <span data-status>{{statusLabel}}</span>
+          </div>
+          <div class="join-main">
+            <div>
+              <h2 id="join-title">{{joinTitle}}</h2>
+              <p class="join-description" data-join-description>{{joinDescription}}</p>
+              <div class="join-actions">
+                {{registrationAction}}<a
+                  class="button button-outline"
+                  href="campus-meetup.ics"
+                  download
+                  data-calendar
+                  >加入日历 <span aria-hidden="true">＋</span></a
+                ><button type="button" class="text-link" data-share hidden>
+                  分享活动 <span aria-hidden="true">↗</span>
+                </button>
+              </div>
+            </div>
+            <div class="join-emblem" aria-hidden="true">
+              <span>✳</span>
+            </div>
+          </div>
+          <div class="join-footer">
+            <span>{{fullDate}} · {{timeRange}}</span>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer shell">
+      <div>
+        <a class="brand" href="#main">TRAE <span>on Campus</span></a>
+        <p>{{organizer}} 主办</p>
+      </div>
+      <div class="footer-links">
+        <a href="https://www.trae.cn/" target="_blank" rel="noopener noreferrer">TRAE 中国版 ↗</a
+        ><a href="https://www.trae.ai/" target="_blank" rel="noopener noreferrer">TRAE 国际版 ↗</a
+        ><a href="#main">回到顶部 ↑</a>
+      </div>
+    </footer>
+    <div class="toast" role="status" aria-live="polite" aria-atomic="true"></div>
+    <dialog class="copy-dialog" aria-labelledby="copy-title">
+      <button
+        type="button"
+        class="icon-button dialog-close"
+        data-close-copy
+        aria-label="关闭复制窗口"
+      >
+        ×
+      </button>
+      <h2 id="copy-title">复制内容</h2>
+      <p id="copy-help">浏览器暂不支持自动复制，请选中下方文字复制。</p>
+      <textarea readonly aria-describedby="copy-help" aria-label="待复制的内容"></textarea>
+    </dialog>
+    <dialog class="lightbox" aria-label="活动照片">
+      <button
+        class="icon-button lightbox-close"
+        type="button"
+        data-close-lightbox
+        aria-label="关闭照片"
+      >
+        ×
+      </button>
+      <figure>
+        <img alt="" width="1200" height="800" />
+        <figcaption></figcaption>
+      </figure>
+      <div class="lightbox-controls">
+        <button type="button" class="button button-outline" data-photo-prev aria-label="上一张照片">
+          ←</button
+        ><span data-photo-count aria-live="polite"></span
+        ><button
+          type="button"
+          class="button button-outline"
+          data-photo-next
+          aria-label="下一张照片"
+        >
+          →
+        </button>
+      </div>
+    </dialog>
+  </body>
+</html>

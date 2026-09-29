@@ -1,0 +1,132 @@
+{
+  "name": "TRAE on Campus · 北京三校联合站",
+  "edition": "地大站第二场",
+  "phase": "upcoming",
+  "start": "2026-10-10T13:30:00+08:00",
+  "end": "2026-10-10T17:00:00+08:00",
+  "organizer": "字节跳动 TRAE 官方团队",
+  "schools": ["中国地质大学（北京）", "北京语言大学", "北京科技大学"],
+  "venue": "大钟寺广场 · 1 号楼 3F 报告厅",
+  "address": "北京市海淀区北三环西路甲18号院大钟寺广场1号楼3F报告厅",
+  "registration": {
+    "status": "pending",
+    "url": null
+  },
+  "contact": null,
+  "entryNote": "具体入场方式与设备准备要求将在确认后公布。",
+  "guests": [],
+  "team": [
+    { "id": "cugb-ambassador", "group": "cugb", "name": null, "role": "校园大使" },
+    { "id": "blcu-ambassador-1", "group": "blcu", "name": null, "role": "校园大使" },
+    { "id": "blcu-ambassador-2", "group": "blcu", "name": null, "role": "校园大使" },
+    { "id": "ustb-ambassador", "group": "ustb", "name": null, "role": "校园大使" },
+    { "id": "chunxiao", "group": "trae", "name": "春晓", "role": "TRAE 运营总负责人" },
+    { "id": "xinran", "group": "trae", "name": "欣然", "role": "TRAE 运营实习生" },
+    {
+      "id": "zhiqian",
+      "group": "trae",
+      "name": "治乾",
+      "role": "TRAE 产品经理",
+      "speakerOrder": 1
+    },
+    { "id": "keke", "group": "trae", "name": "可可", "role": "TRAE 产品经理", "speakerOrder": 2 }
+  ],
+  "pastPhotos": [],
+  "recap": null,
+  "agenda": [
+    {
+      "start": "13:30",
+      "end": "14:00",
+      "title": "签到与暖场",
+      "type": "WELCOME",
+      "detail": "从一句你好开始，认识今天一起探索 AI Coding 的同学。"
+    },
+    {
+      "start": "14:00",
+      "end": "14:10",
+      "title": "TRAE on Campus 开场介绍",
+      "type": "OPENING",
+      "detail": "认识 TRAE 与校园活动，开启这个下午的交流。"
+    },
+    {
+      "start": "14:10",
+      "end": "14:40",
+      "title": "第一场嘉宾观点分享",
+      "type": "TALK 01",
+      "detail": "从分享者的经验里，寻找你的第一步。具体话题后续公布。"
+    },
+    {
+      "start": "14:40",
+      "end": "15:00",
+      "title": "第一轮 Q&A",
+      "type": "ASK ANYTHING",
+      "detail": "把困惑带到现场，让交流从你的问题出发。"
+    },
+    {
+      "start": "15:00",
+      "end": "15:30",
+      "title": "第二场嘉宾观点分享",
+      "type": "TALK 02",
+      "detail": "换一个视角，继续探索人与 AI 的协作。具体话题后续公布。"
+    },
+    {
+      "start": "15:30",
+      "end": "15:50",
+      "title": "第二轮 Q&A",
+      "type": "ASK ANYTHING",
+      "detail": "围绕分享内容提问，把听到的方法联系到自己的学习与实践。"
+    },
+    {
+      "start": "15:50",
+      "end": "16:10",
+      "title": "茶歇与自由交流",
+      "type": "TAKE A BREAK",
+      "detail": "暂停一下，和身边的人聊聊。也许下一个想法就从这里开始。"
+    },
+    {
+      "start": "16:10",
+      "end": "16:50",
+      "title": "现场 AI Coding 演示答疑与抽奖",
+      "type": "LIVE BUILD",
+      "detail": "看一个想法如何变成可运行的成果，现场交流你的问题。抽奖细则后续公布。",
+      "featured": true
+    },
+    {
+      "start": "16:50",
+      "end": "17:00",
+      "title": "合影留念",
+      "type": "SEE YOU AGAIN",
+      "detail": "为这个下午留下合影，把新的想法带回校园。"
+    }
+  ],
+  "faq": [
+    {
+      "question": "没有编程基础，也可以参加吗？",
+      "answer": "可以。活动希望让各专业、不同技术背景的同学了解 AI Coding。你可以从主题分享、现场演示与问答开始，带着好奇心和问题来。"
+    },
+    {
+      "question": "哪些同学可以参加？",
+      "answer": "本次活动面向中国地质大学（北京）、北京语言大学、北京科技大学在校生，以本科生为主。计划规模为 150–200 人，具体报名安排后续公布。"
+    },
+    {
+      "question": "需要携带电脑或提前安装软件吗？",
+      "answer": "设备准备与软件安装要求将在确认后公布。你也可以先访问 TRAE 官网了解产品，为现场交流准备感兴趣的问题。"
+    },
+    {
+      "question": "如何报名和进入活动现场？",
+      "answer": "报名入口与具体入场方式尚未公布。活动计划于 13:30 开始签到；请在出发前查看本页更新后的参会指引。"
+    },
+    {
+      "question": "活动结束后，还能在哪里看回顾？",
+      "answer": "本页会在活动结束、资料整理完成后更新真实现场照片、内容摘要与公开作品链接。可以收藏本页，继续关注。"
+    }
+  ],
+  "plannedParticipants": {
+    "min": 150,
+    "max": 200
+  },
+  "previousEvent": {
+    "date": "2026-05-10",
+    "label": "地大站首场活动"
+  }
+}

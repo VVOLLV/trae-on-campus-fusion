@@ -1,0 +1,310 @@
+:root {
+  --cugb-background: #f7f7f2;
+  --cugb-foreground: #181818;
+  --cugb-card: #ffffff;
+  --cugb-card-foreground: #181818;
+  --cugb-popover: #ffffff;
+  --cugb-popover-foreground: #181818;
+  --cugb-primary: #b8f24a;
+  --cugb-primary-foreground: #181818;
+  --cugb-muted: #e9e9e2;
+  --cugb-muted-foreground: #686861;
+  --cugb-border: #d9d9d2;
+  --cugb-input: #d9d9d2;
+  --cugb-ring: #b8f24a;
+  --cugb-radius-sm: 8px;
+  --cugb-radius-md: 14px;
+  --cugb-radius-lg: 24px;
+  /* Deeper paper used by the alternating section bands. */
+  --surface-alt: #f1f1ea;
+  /* In-place hover fills for the header CTA: a quiet tint inside the pill. */
+  --cta-fill-outline: rgba(24, 24, 24, 0.06);
+  --cta-fill-solid: #2e3328;
+}
+
+/* ---------------------------------------------------------------------------
+   Trae theme layer (html[data-theme='trae']).
+   Values follow the TraeCode dark design library (bg-base-default #1A1B1D,
+   bg-base-secondary #222427, bg-brand #32F08C, text-default #D1D3DB,
+   text-secondary #9599A6, border-neutral-l1). The campus palette above stays
+   the only default; switching themes changes the skin, never the layout.
+   The attribute selector outranks `:root` in styles.css on purpose, so this
+   file stays the single token source.
+--------------------------------------------------------------------------- */
+html[data-theme='trae'] {
+  color-scheme: dark;
+
+  --cugb-background: #1a1b1d;
+  --cugb-foreground: #f2f3f5;
+  --cugb-card: #222427;
+  --cugb-card-foreground: #f2f3f5;
+  --cugb-popover: #202123;
+  --cugb-popover-foreground: #f2f3f5;
+  --cugb-primary: #32f08c;
+  --cugb-primary-foreground: #0c0c0d;
+  --cugb-muted: #2a2d31;
+  --cugb-muted-foreground: #a8abb2;
+  --cugb-border: #34373c;
+  --cugb-input: #2a2d31;
+  --cugb-ring: #32f08c;
+  --cugb-radius-sm: 4px;
+  --cugb-radius-md: 8px;
+  --cugb-radius-lg: 10px;
+
+  /* Aliases declared in styles.css. */
+  --paper: #1a1b1d;
+  --ink: #f2f3f5;
+  --lime: #32f08c;
+  --muted: #a8abb2;
+  --line: #34373c;
+  --mono: 'JetBrains Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
+  --surface-alt: #202124;
+  --cta-fill-outline: rgba(242, 243, 245, 0.12);
+
+  /* Roles used by the skin rules below. */
+  --theme-panel: #222427;
+  --theme-panel-2: #2a2d31;
+  --theme-panel-line: rgba(224, 226, 242, 0.16);
+  --theme-panel-soft: #d1d3db;
+  --theme-panel-mute: #9599a6;
+  --theme-accent-ink: #0c0c0d;
+  --theme-radius: 10px;
+  --theme-radius-sm: 8px;
+}
+
+html[data-theme='trae'] ::selection {
+  background: var(--lime);
+  color: var(--theme-accent-ink);
+}
+html[data-theme='trae'] :focus-visible {
+  outline-color: var(--lime);
+}
+html[data-theme='trae'] .scroll-progress span {
+  background: var(--lime);
+}
+html[data-theme='trae'] .site-header {
+  background: rgba(26, 27, 29, 0.94);
+}
+@supports (backdrop-filter: blur(16px)) {
+  html[data-theme='trae'] .site-header {
+    background: rgba(26, 27, 29, 0.85);
+  }
+}
+html[data-theme='trae'] .menu-cta .status-dot {
+  color: var(--lime);
+}
+html[data-theme='trae'] .skip-link {
+  background: var(--lime);
+  color: var(--theme-accent-ink);
+}
+
+/* Hero: the outlined display type turns into solid brand green. */
+html[data-theme='trae'] .outline {
+  color: var(--lime);
+  -webkit-text-fill-color: var(--lime);
+  -webkit-text-stroke-color: var(--lime);
+}
+html[data-theme='trae'] .hero-fusion.outline {
+  -webkit-text-fill-color: transparent;
+}
+html[data-theme='trae'] .fusion-letter {
+  background:
+    radial-gradient(
+      ellipse var(--type-radius, 90px) 160px at var(--letter-light, 0px) var(--type-y, 50%),
+      rgb(245 255 224 / var(--type-light, 0)) 0%,
+      rgb(50 240 140 / var(--type-light, 0)) 32%,
+      rgb(15 220 120 / var(--type-light, 0)) 57%,
+      transparent 82%
+    ),
+    linear-gradient(var(--lime), var(--lime));
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+html[data-theme='trae'] .hero-heading::before {
+  background: radial-gradient(
+    ellipse 260px 150px at var(--title-x, 80%) var(--title-y, 40%),
+    rgba(50, 240, 140, 0.3),
+    rgba(50, 240, 140, 0.08) 55%,
+    transparent 80%
+  );
+}
+
+/* The Fusion scene is a printed sheet: it keeps its own paper, ink and brand
+   green in both themes, so the near-black TRAE tile never turns into the page. */
+
+/* Cards: bright campus panels become dark panels with brand accents. */
+html[data-theme='trae'] .manifesto-card {
+  background: var(--theme-panel);
+  color: var(--ink);
+  box-shadow: inset 0 0 0 1px rgba(50, 240, 140, 0.32);
+}
+html[data-theme='trae'] .manifesto-card > p {
+  color: #f2f3f5;
+}
+html[data-theme='trae'] .manifesto-star {
+  color: var(--lime);
+}
+html[data-theme='trae'] .manifesto-footer {
+  border-top-color: var(--theme-panel-line);
+  color: var(--theme-panel-mute);
+}
+html[data-theme='trae'] .manifesto-footer a {
+  color: var(--lime);
+}
+html[data-theme='trae'] .numbers-panel {
+  background: var(--theme-panel);
+  color: #f2f3f5;
+}
+html[data-theme='trae'] .numbers-top,
+html[data-theme='trae'] .numbers-note,
+html[data-theme='trae'] .stats-grid dt {
+  color: var(--theme-panel-mute);
+}
+html[data-theme='trae'] .stats-grid > div {
+  border-left-color: var(--theme-panel-line);
+}
+html[data-theme='trae'] .agenda-row.featured {
+  background: var(--theme-panel);
+  border-radius: var(--theme-radius-sm);
+  box-shadow: inset 0 0 0 1px rgba(50, 240, 140, 0.3);
+}
+html[data-theme='trae'] .pending-symbol {
+  border-color: rgba(224, 226, 242, 0.3);
+}
+
+/* Team panel and roster. */
+html[data-theme='trae'] .team-visual {
+  background: var(--theme-panel);
+  color: #f2f3f5;
+  border-radius: var(--theme-radius);
+}
+html[data-theme='trae'] .team-legend {
+  color: var(--theme-panel-soft);
+}
+html[data-theme='trae'] .team-legend li > span {
+  color: var(--theme-panel-mute);
+}
+html[data-theme='trae'] .team-selection {
+  border-top-color: var(--theme-panel-line);
+}
+html[data-theme='trae'] .team-selection div > span {
+  color: var(--theme-panel-mute);
+}
+html[data-theme='trae'] .team-member[aria-pressed='true'] {
+  background: var(--theme-panel-2);
+}
+html[data-theme='trae'] .team-bar[aria-pressed='true'] {
+  box-shadow: 0 8px 0 rgba(242, 243, 245, 0.16);
+}
+
+/* Memory, venue art and closing card. */
+html[data-theme='trae'] .history-card {
+  background: var(--theme-panel);
+  border-radius: var(--theme-radius);
+}
+html[data-theme='trae'] .history-card.next {
+  background: var(--theme-panel-2);
+}
+html[data-theme='trae'] .history-date span {
+  color: var(--theme-panel-mute);
+}
+html[data-theme='trae'] .archive-note,
+html[data-theme='trae'] .photo-card a {
+  background: var(--theme-panel);
+}
+html[data-theme='trae'] .venue-art {
+  background: var(--theme-panel);
+  border-radius: var(--theme-radius);
+}
+html[data-theme='trae'] .building-roof {
+  background: #2f3237;
+  border-color: #4a4f57;
+}
+html[data-theme='trae'] .building-floor {
+  background: #26282c;
+  border-color: #4a4f57;
+}
+html[data-theme='trae'] .building-floor i {
+  background: #34373c;
+  border-color: #4a4f57;
+}
+html[data-theme='trae'] .building-floor.floor-3 {
+  background: var(--lime);
+  border-color: var(--lime);
+}
+html[data-theme='trae'] .building-floor.floor-3 > span {
+  color: var(--theme-accent-ink);
+}
+html[data-theme='trae'] .floor-3 i {
+  background: rgba(12, 12, 13, 0.22);
+}
+html[data-theme='trae'] .join-card {
+  color: var(--theme-accent-ink);
+  border-radius: var(--theme-radius);
+}
+html[data-theme='trae'] .join-card .section-label,
+html[data-theme='trae'] .join-footer {
+  border-color: rgba(12, 12, 13, 0.25);
+  color: var(--theme-accent-ink);
+}
+html[data-theme='trae'] .join-description,
+html[data-theme='trae'] .join-card .text-link {
+  color: var(--theme-accent-ink);
+}
+html[data-theme='trae'] .join-card .button-dark {
+  background: var(--theme-accent-ink);
+  color: var(--lime);
+}
+html[data-theme='trae'] .join-card .button-outline {
+  border-color: var(--theme-accent-ink);
+}
+
+/* Dialogs and buttons. */
+html[data-theme='trae'] .button {
+  border-radius: var(--theme-radius-sm);
+}
+/* The header CTA carries the brand colour in the dark theme, so its in-place
+   hover fill can read as brighter rather than washing out. */
+html[data-theme='trae'] .header-cta.button-dark {
+  background: var(--lime);
+  color: var(--theme-accent-ink);
+}
+html[data-theme='trae'] .copy-dialog {
+  background: var(--cugb-popover);
+  border-radius: var(--theme-radius);
+}
+html[data-theme='trae'] .copy-dialog textarea {
+  background: var(--theme-panel-2);
+  border-color: var(--line);
+}
+html[data-theme='trae'] .lightbox {
+  border-radius: var(--theme-radius);
+}
+
+@media (hover: hover) {
+  html[data-theme='trae'] .button:not(.header-cta):hover {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.45);
+  }
+  html[data-theme='trae'] .button-dark:hover {
+    background: #34373c;
+  }
+  html[data-theme='trae'] .button-outline:hover {
+    background: rgba(224, 226, 242, 0.08);
+  }
+  html[data-theme='trae'] .header-cta.button-outline:hover {
+    background: var(--cta-fill-outline);
+  }
+  html[data-theme='trae'] .header-cta.button-dark:hover {
+    background: #4bffa8;
+  }
+  html[data-theme='trae'] .text-link:hover,
+  html[data-theme='trae'] .desktop-nav a:hover {
+    color: var(--lime);
+  }
+  html[data-theme='trae'] .menu-cta:hover {
+    color: var(--lime);
+  }
+  html[data-theme='trae'] .team-member:not(:disabled):hover {
+    background: var(--theme-panel-2);
+  }
+}
